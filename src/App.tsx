@@ -1,40 +1,26 @@
-import React, { FormEvent, useState } from "react";
+import React from "react";
+import { SubmitHandler, useForm } from "react-hook-form";
 
 import styles from "./styles.module.css";
 
+interface FormProps {
+  name: string;
+  email: string;
+  password: string;
+}
+
 function App() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const { register, handleSubmit } = useForm<FormProps>();
 
-  function handleSubmit(event: FormEvent) {
-    event.preventDefault();
+  const submitForm: SubmitHandler<FormProps> = (data) => {
+    console.log(data);
+  };
 
-    console.log({
-      name,
-      email,
-      password,
-    });
-  }
   return (
-    <form className={styles.formContainer} onSubmit={handleSubmit}>
-      <input
-        placeholder="Name"
-        value={name}
-        onChange={(event) => setName(event.target.value)}
-      />
-      <input
-        type="email"
-        placeholder="E-mail"
-        value={email}
-        onChange={(event) => setEmail(event.target.value)}
-      />
-      <input
-        type="password"
-        placeholder="Password"
-        value={password}
-        onChange={(event) => setPassword(event.target.value)}
-      />
+    <form className={styles.formContainer} onSubmit={handleSubmit(submitForm)}>
+      <input placeholder="Name" {...register("name")} />
+      <input type="email" placeholder="E-mail" {...register("email")} />
+      <input type="password" placeholder="Password" {...register("password")} />
       <button type="submit">Submit</button>
     </form>
   );
