@@ -1,0 +1,53 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #f0f2f5;
+  -webkit-font-smoothing: antialiased;
+}
+
+button {
+  cursor: pointer;
+}
+
+.formContainer {
+  margin: 0 auto;
+  width: 480px;
+}
+
+.formContainer input {
+  margin-top: 2rem;
+  width: 100%;
+  padding: 0 1.5rem;
+  height: 4rem;
+  border-radius: 0.25rem;
+  border: 1px solid #d7d7d7;
+  background: #e7e9ee;
+  font-size: 1rem;
+  font-weight: 400;
+}
+.formContainer input::placeholder {
+  color: var(--text-body);
+}
+.formContainer input + input {
+  margin-top: 1rem;
+}
+.formContainer button[type="submit"] {
+  width: 100%;
+  padding: 0 1.5rem;
+  height: 4rem;
+  background: #33cc95;
+  color: #fff;
+  border-radius: 0.25rem;
+  border: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  transition: filter 0.2s;
+}
+.formContainer button[type="submit"]:hover {
+  filter: brightness(0.9);
+}
